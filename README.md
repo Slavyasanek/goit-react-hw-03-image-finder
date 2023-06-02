@@ -1,11 +1,18 @@
-# React homework template
+# Пошук зображень
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+Напиши застосунок пошуку зображень за ключовим словом.
 
-## Создание репозитория по шаблону
+## goit-react-hw-03-image-finder
+
+Прев'ю робочого застосунку дивись за [посиланням](https://drive.google.com/file/d/1oXCGyiq4uKwW0zzraZLKk4lh3voBlBzZ/view).
+
+## Завдання
+
+Створи компоненти <Searchbar>, <ImageGallery>, <ImageGalleryItem>, <Loader>, <Button> і <Modal>
+
+![image-finder](./assets/image-finder.jpg)
+
+
 
 Используй этот репозиторий организации GoIT как шаблон для создания репозитория
 своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
@@ -94,11 +101,11 @@ GitHub.
 необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
 `basename` точное название твоего репозитория. Слеш в начале строки обязателен.
 
-```jsx
+
 <BrowserRouter basename="/your_repo_name">
   <App />
 </BrowserRouter>
-```
+
 
 ## Как это работает
 
