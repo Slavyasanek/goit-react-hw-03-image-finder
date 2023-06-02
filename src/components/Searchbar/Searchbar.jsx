@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, SearchBtn, SearchForm, SearchInput } from './Searchbar.styled';
 import {BsFillSearchHeartFill} from 'react-icons/bs'
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
     searchValue: ''
@@ -10,8 +11,14 @@ class Searchbar extends Component {
     state = {
         ...INITIAL_STATE
     }
+    
+    static propTypes = {
+        handleSearch: PropTypes.func.isRequired,
+
+    }
     handleSubmit = e => {
         e.preventDefault();
+        this.props.handleSearch(this.state.searchValue)
         this.reset();
     }
     handleChange = ({target: {value}}) => {
