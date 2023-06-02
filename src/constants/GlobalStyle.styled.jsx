@@ -7,5 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     color:  ${props => props.theme.fontColor};
     font-size: 20px;
+    padding-bottom: 50px;
   }
 `

@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    min-width: 320px;
     @media screen and (min-width: 760px) {
     padding-top: 130px;
       max-width: 760px;

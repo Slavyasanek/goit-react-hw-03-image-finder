@@ -11,6 +11,7 @@ background-color: ${props => props.theme.pink};
   padding-bottom: 20px;
   z-index: 999;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
+  min-width: 320px;
   @media screen and (min-width: 1200px) {
     padding-top: 20px; 
   }

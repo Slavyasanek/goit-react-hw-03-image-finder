@@ -8,7 +8,7 @@ class ImageGalleryItem extends Component {
         return (
             <Item>
                 <ImageWrapper>
-                    <Image src={this.props.link} alt={this.props.title} data-large={this.props.large} />
+                    <Image src={this.props.link} alt={this.props.title} data-large={this.props.large} loading="lazy"/>
                 </ImageWrapper>
             </Item>
         );

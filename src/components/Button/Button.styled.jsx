@@ -9,18 +9,20 @@ export const LoadButton = styled.button`
     gap: 10px;
     margin-top: 30px;
     width: 200px;
-    height: 40px;
     font-size: 20px;
     text-transform: uppercase;
     background-color: ${props => props.theme.decorativeColor};
     border-radius: 5px;
     border: 2px solid ${props => props.theme.decorativeColor};
     color: ${props => props.theme.oddBcg};
+    padding-top: 10px;
+    padding-bottom: 10px;
     cursor: pointer;
     &:hover,
     &:focus,
     &:active {
       border: 2px solid ${props => props.theme.fontColor};
+      color: ${props => props.theme.fontColor};
       & svg {
         fill: ${props => props.theme.fontColor};
       }
