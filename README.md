@@ -8,7 +8,8 @@
 
 ## Завдання
 
-Створи компоненти <Searchbar>, <ImageGallery>, <ImageGalleryItem>, <Loader>, <Button> і <Modal>
+Створи компоненти ```html 
+<Searchbar>, <ImageGallery>, <ImageGalleryItem>, <Loader>, <Button> і <Modal> ```
 
 ![image-finder](./assets/image-finder.jpg)
 
@@ -61,6 +62,18 @@ Pixabay API підтримує пагінацію, за замовчування
   <!-- Набір <li> із зображеннями -->
 </ul>
 ```
+
+## Опис компонента <ImageGalleryItem>
+
+Компонент елемента списку із зображенням. Створює DOM-елемент наступної структури.
+
+```html
+<li class="gallery-item">
+  <img src="" alt="" />
+</li>
+```
+
+## Опис компонента `<Button>`
 
 
 Используй этот репозиторий организации GoIT как шаблон для создания репозитория
