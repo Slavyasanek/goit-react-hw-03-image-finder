@@ -4,6 +4,8 @@ export const Wrapper = styled.div`
     padding-top: 110px;
     max-width: 300px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     @media screen and (min-width: 760px) {
     padding-top: 130px;
       max-width: 760px;
