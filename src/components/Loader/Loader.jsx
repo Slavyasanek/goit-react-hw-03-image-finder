@@ -10,11 +10,10 @@ class Loader extends Component {
         height="200"
         color='#4a4452'
         wrapperStyle={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
         }}
         />
         </>);

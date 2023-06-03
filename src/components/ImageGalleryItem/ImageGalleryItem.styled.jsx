@@ -33,9 +33,6 @@ export const ImageWrapper = styled.div`
 `
 
 export const Image = styled.img`
-    /* border-top-left-radius: 5px;
-    border-top-right-radius: 5px; */
-    border-bottom: none;
     object-fit: cover;
     width: 100%;
     object-position: center;

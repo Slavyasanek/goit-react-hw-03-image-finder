@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Gallery } from './ImageGallery.styled';
 import { getImages } from 'helpers/api';
+
+import {BsBox2Heart, BsHeartbreak} from 'react-icons/bs';
+import { Gallery } from './ImageGallery.styled';
+
+
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
+import Notification from 'components/Notification/Notification';
 
 class ImageGallery extends Component {
     state = {
@@ -20,16 +25,18 @@ class ImageGallery extends Component {
             this.setState({ status: 'pending' })
             try {
                 const images = await getImages(newQuery);
+                console.log(images);
                 this.setState({
                     photos: images.hits,
                     status: 'resolved',
-                    maxPage: Math.floor(images.totalHits / 12),
+                    maxPage: Math.ceil(images.totalHits / 12),
                     currentPage: 1
                 })
             } catch (e) {
                 this.setState({ status: 'rejected' })
             }
         }
+        console.log(this.state);
     }
 
     loadMore = async () => {
@@ -39,7 +46,6 @@ class ImageGallery extends Component {
                 return {
                     photos: [...prevState.photos, ...images.hits],
                     status: 'resolved',
-                    maxPage: Math.round(images.totalHits / 12),
                     currentPage: prevState.currentPage + 1
                 }
             })
@@ -60,7 +66,10 @@ class ImageGallery extends Component {
         const { photos, status, currentPage, maxPage } = this.state
 
         if (status === 'idle') {
-            return (<></>)
+            return (<>
+                <Notification message="Inspire yourself"
+                icon={<BsBox2Heart/>}/>
+                </>)
         } else if (status ==='pending') {
             return (<>
                 <Loader/>
@@ -76,11 +85,20 @@ class ImageGallery extends Component {
                 {currentPage !== maxPage && <Button loadMore={this.loadMore} />}
                 </>
                 )
-                 : (<p>No matches found</p>)}
+                 : (<Notification 
+                 message="No matches found"
+                 icon={<BsHeartbreak/>}
+                 />)}
                 </>
             ) 
         } else if (status === 'rejected') {
-
+            return (
+                <>
+                <Notification 
+                 message="Something went wrong"
+                 icon={<BsHeartbreak/>}/>
+                </>
+            )
         }
     }
 }
