@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { ModalImage, ModalWrapper, Overlay } from './Modal.styled';
 
+
+const modalVariant = {
+    initial: { opacity: 0 },
+    isOpen: { opacity: 1 },
+    exit: { opacity: 0 }
+};
+
+const containerVariant = {
+    initial: { scale: 0.5, x: '-50%', y: '0%'},
+    isOpen: { scale: 1, x: '-50%', y: '-50%', transition: { type: "spring"}  },
+    exit: { scale: 0, x: '-50%', y: '0%'}
+};
+
 class Modal extends Component {
-    state = {  } 
+    state = {}
 
     closeModalByEsc = (e) => {
-        if(e.code === 'Escape') {
+        if (e.code === 'Escape') {
             this.props.closeModal();
         }
     }
@@ -16,21 +29,28 @@ class Modal extends Component {
     }
     componentDidMount() {
         window.addEventListener("keydown", this.closeModalByEsc);
-        document.body.style.overflow = 'hidden'
+        document.body.classList.add('lock')
     }
     componentWillUnmount() {
         window.removeEventListener("keydown", this.closeModalByEsc);
-        document.body.style.overflow = 'unset'
+        document.body.classList.remove('lock')
     }
-    render() { 
+    render() {
+
         return (
-        <Overlay onClick={this.closeModalByOverlay}>
-            <ModalWrapper>
-          <ModalImage src={this.props.largeImage} alt="large photo" />
-        </ModalWrapper>
-      </Overlay>
-      );
+
+                <Overlay onClick={this.closeModalByOverlay}
+                    initial={"initial"}
+                    animate={"isOpen"}
+                    exit={"exit"}
+                    variants={modalVariant}
+                >
+                    <ModalWrapper variants={containerVariant}>
+                        <ModalImage src={this.props.largeImage} alt="large photo" />
+                    </ModalWrapper>
+                </Overlay>
+        );
     }
 }
- 
+
 export default Modal;

@@ -3,6 +3,7 @@ import Searchbar from './Searchbar/Searchbar';
 import { Container } from './Container/Container';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Modal from './Modal/Modal';
+import { AnimatePresence } from 'framer-motion';
 
 class App extends Component {
   state = {
@@ -34,7 +35,9 @@ class App extends Component {
         <Container>
           <ImageGallery query={searchText} openLarge={this.openModal}/>
         </Container>
+        <AnimatePresence initial={true} mode='wait'>
         {isShowModal && <Modal closeModal={this.closeModal} largeImage={largeImage}/>}
+        </AnimatePresence>
       </>
     );
   }

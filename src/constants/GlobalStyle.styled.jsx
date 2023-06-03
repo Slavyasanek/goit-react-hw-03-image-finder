@@ -8,5 +8,9 @@ export const GlobalStyle = createGlobalStyle`
     color:  ${props => props.theme.fontColor};
     font-size: 20px;
     padding-bottom: 50px;
+    overflow: overlay;
+    &.lock {
+      overflow: hidden;
+    }
   }
 `

@@ -36,7 +36,6 @@ class ImageGallery extends Component {
                 this.setState({ status: 'rejected' })
             }
         }
-        console.log(this.state);
     }
 
     loadMore = async () => {
