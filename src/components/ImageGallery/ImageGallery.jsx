@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getImages } from 'helpers/api';
 
 import {BsBox2Heart, BsHeartbreak} from 'react-icons/bs';
@@ -18,6 +19,10 @@ class ImageGallery extends Component {
         maxPage: 0,
     }
 
+    static propTypes = {
+        openLarge: PropTypes.func.isRequired,
+    }
+
     async componentDidUpdate(prevProps, _) {
         const prevQuery = prevProps.query;
         const newQuery = this.props.query;
@@ -25,7 +30,6 @@ class ImageGallery extends Component {
             this.setState({ status: 'pending' })
             try {
                 const images = await getImages(newQuery);
-                console.log(images);
                 this.setState({
                     photos: images.hits,
                     status: 'resolved',
@@ -78,7 +82,7 @@ class ImageGallery extends Component {
                 <>
                   {photos.length > 0 ? 
                     (<><Gallery onClick={this.getLargeImage}>{photos.map((photo) =>
-                        <ImageGalleryItem key={photo.id} link={photo.webformatURL} large={photo.largeImageURL} />
+                        <ImageGalleryItem key={photo.id} link={photo.webformatURL} large={photo.largeImageURL} title={photo.tags} />
                     )}
                 </Gallery>
                 {currentPage !== maxPage && <Button loadMore={this.loadMore} />}

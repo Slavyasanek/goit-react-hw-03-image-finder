@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { LoadButton } from './Button.styled';
 import PropTypes from 'prop-types';
+import { LoadButton } from './Button.styled';
 import {AiFillFileImage} from 'react-icons/ai';
 
 class Button extends Component {
-    state = {  } 
-
     static propTypes = {
         LoadMore: PropTypes.func
     }
     render() { 
+        const {loadMore} = this.props
         return (
             <>
-            <LoadButton type="button" onClick={this.props.loadMore}>Load more <AiFillFileImage/></LoadButton>
+            <LoadButton type="button" onClick={loadMore}>Load more <AiFillFileImage/></LoadButton>
             </>
         );
     }

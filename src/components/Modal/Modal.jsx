@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ModalImage, ModalWrapper, Overlay } from './Modal.styled';
-
+import PropTypes from 'prop-types';
 
 const modalVariant = {
     initial: { opacity: 0 },
@@ -9,13 +9,16 @@ const modalVariant = {
 };
 
 const containerVariant = {
-    initial: { scale: 0.5, x: '-50%', y: '0%'},
-    isOpen: { scale: 1, x: '-50%', y: '-50%', transition: { type: "spring"}  },
-    exit: { scale: 0, x: '-50%', y: '0%'}
+    initial: { scale: 0.5, x: '-50%', y: '0%' },
+    isOpen: { scale: 1, x: '-50%', y: '-50%', transition: { type: "spring" } },
+    exit: { scale: 0, x: '-50%', y: '0%' }
 };
 
 class Modal extends Component {
-    state = {}
+    static propTypes = {
+        closeModal: PropTypes.func.isRequired,
+        largeImage: PropTypes.string.isRequired
+    }
 
     closeModalByEsc = (e) => {
         if (e.code === 'Escape') {
@@ -36,19 +39,18 @@ class Modal extends Component {
         document.body.classList.remove('lock')
     }
     render() {
-
+        const {largeImage} = this.props
         return (
-
-                <Overlay onClick={this.closeModalByOverlay}
-                    initial={"initial"}
-                    animate={"isOpen"}
-                    exit={"exit"}
-                    variants={modalVariant}
-                >
-                    <ModalWrapper variants={containerVariant}>
-                        <ModalImage src={this.props.largeImage} alt="large photo" />
-                    </ModalWrapper>
-                </Overlay>
+            <Overlay onClick={this.closeModalByOverlay}
+                initial={"initial"}
+                animate={"isOpen"}
+                exit={"exit"}
+                variants={modalVariant}
+            >
+                <ModalWrapper variants={containerVariant}>
+                    <ModalImage src={largeImage} alt="large photo" />
+                </ModalWrapper>
+            </Overlay>
         );
     }
 }
